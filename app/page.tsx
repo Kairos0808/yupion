@@ -20,8 +20,8 @@ export default async function HomePage() {
           <Link href="/market" className="underline">
             行情看板
           </Link>
-          <Link href="/holdings" className="underline">
-            持仓
+          <Link href="/watchlist" className="underline">
+            关注
           </Link>
           <Link href="/about" className="underline">
             关于

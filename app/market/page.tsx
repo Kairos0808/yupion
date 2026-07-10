@@ -34,7 +34,7 @@ export default function MarketPage() {
       {data && (
         <>
           <Section title="大盘指数" rows={data.indices} />
-          <Section title="持仓" rows={data.holdings} />
+          <Section title="关注" rows={data.holdings} />
           <Section title="加密货币" rows={[data.btc]} />
           <p className="mt-6 text-xs text-gray-400">
             数据来源：Yahoo Finance · 更新于{" "}

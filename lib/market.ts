@@ -1,22 +1,11 @@
 import type { MarketRow, MarketSnapshot } from "./types";
+import { getWatchlist } from "./watchlist";
 
 const INDICES: [string, string][] = [
   ["^GSPC", "S&P 500"],
   ["^IXIC", "NASDAQ"],
   ["^DJI", "Dow Jones"],
   ["^VIX", "VIX"],
-];
-
-const HOLDINGS: [string, string][] = [
-  ["TSLA", "Tesla"],
-  ["MSTR", "MicroStrategy"],
-  ["NVDA", "NVIDIA"],
-  ["SMR", "NuScale"],
-  ["GOOGL", "Alphabet"],
-  ["MSFT", "Microsoft"],
-  ["NOK", "Nokia"],
-  ["SPY", "SPY"],
-  ["JEPQ", "JEPQ"],
 ];
 
 interface YFRow {
@@ -51,6 +40,9 @@ async function fetchYahoo(symbol: string): Promise<YFRow | null> {
 }
 
 export async function getMarketSnapshot(): Promise<MarketSnapshot> {
+  const watch = await getWatchlist();
+  const watchList: [string, string][] = watch.map((w) => [w.symbol, w.name]);
+
   const fetchAll = async (
     list: [string, string][]
   ): Promise<MarketRow[]> => {
@@ -69,7 +61,7 @@ export async function getMarketSnapshot(): Promise<MarketSnapshot> {
 
   const [indices, holdings] = await Promise.all([
     fetchAll(INDICES),
-    fetchAll(HOLDINGS),
+    fetchAll(watchList),
   ]);
 
   const btcRaw = await fetchYahoo("BTC-USD");
