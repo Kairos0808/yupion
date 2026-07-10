@@ -34,12 +34,12 @@ export default async function HomePage() {
             </a>
           </div>
         </div>
-        <div className="relative">
+        <div className="rounded-2xl bg-white p-3 shadow-lg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/hero.png"
+            src="/hero.jpg"
             alt="hero"
-            className="w-full rounded-2xl"
+            className="w-full rounded-xl"
           />
         </div>
       </section>
