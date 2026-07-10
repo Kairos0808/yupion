@@ -10,6 +10,42 @@ export default async function HomePage() {
 
   return (
     <Shell>
+      <section className="grid items-center gap-8 md:grid-cols-2">
+        <div className="space-y-4">
+          <span className="chip">Fintech · 每日早报</span>
+          <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+            金融科技早报
+          </h1>
+          <p className="text-sm text-[var(--color-muted)]">
+            每日 fintech 新闻摘要、原创分析与美股 / 加密市场快照，由 Hermes Agent 自动生成。
+          </p>
+          <div className="flex gap-3 pt-2">
+            <a
+              href="/briefs"
+              className="rounded-xl bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
+            >
+              浏览早报
+            </a>
+            <a
+              href="/market"
+              className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)] px-4 py-2 text-sm font-medium transition hover:border-[var(--color-accent)]"
+            >
+              实时行情
+            </a>
+          </div>
+        </div>
+        <div className="relative">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hero.png"
+            alt="hero"
+            className="w-full rounded-2xl"
+          />
+        </div>
+      </section>
+
+      <div className="my-8 h-px bg-[var(--color-border)]" />
+
       {!brief ? (
         <p className="text-[var(--color-muted)]">暂无早报。等待下次推送…</p>
       ) : (
