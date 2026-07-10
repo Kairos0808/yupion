@@ -1,0 +1,11 @@
+[
+  { "symbol": "TSLA", "name": "Tesla" },
+  { "symbol": "MSTR", "name": "MicroStrategy" },
+  { "symbol": "NVDA", "name": "NVIDIA" },
+  { "symbol": "SMR", "name": "NuScale" },
+  { "symbol": "GOOGL", "name": "Alphabet" },
+  { "symbol": "MSFT", "name": "Microsoft" },
+  { "symbol": "NOK", "name": "Nokia" },
+  { "symbol": "SPY", "name": "SPY" },
+  { "symbol": "JEPQ", "name": "JEPQ" }
+]

@@ -1,23 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
-import { saveBrief } from "@/lib/storage";
-import type { Brief } from "@/lib/types";
+import { NextResponse } from "next/server";
 
-// Accept pushes from the Hermes morning-brief cron.
-export async function POST(request: NextRequest) {
-  try {
-    const body = (await request.json()) as Brief;
-    if (!body?.date || !body?.title) {
-      return NextResponse.json(
-        { ok: false, error: "missing date or title" },
-        { status: 400 }
-      );
-    }
-    await saveBrief(body);
-    return NextResponse.json({ ok: true, date: body.date });
-  } catch (e) {
-    return NextResponse.json(
-      { ok: false, error: String(e) },
-      { status: 500 }
-    );
-  }
+// NOTE: Vercel serverless runtime has a read-only filesystem, so we cannot
+// write briefs at request time. Publishing is done by pushing the JSON file
+// into /data/briefs/ and committing to the repo (Vercel re-deploys via
+// push-to-deploy). This endpoint documents that contract.
+export async function POST() {
+  return NextResponse.json(
+    {
+      ok: false,
+      error:
+        "Vercel filesystem is read-only. Publish by committing the brief JSON to data/briefs/<date>.json and pushing to the repo.",
+    },
+    { status: 501 }
+  );
 }

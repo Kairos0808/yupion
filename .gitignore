@@ -36,8 +36,7 @@ yarn-error.log*
 # vercel
 .vercel
 
-# runtime data (briefs pushed at runtime)
-/data/
+# runtime data lives in repo (Vercel read-only FS, published via git push)
 
 # typescript
 *.tsbuildinfo
