@@ -32,7 +32,7 @@ export default function AboutPage() {
       </section>
 
       <footer className="mt-10 border-t pt-4 text-xs text-gray-400">
-        数据来源：Yahoo Finance。本早報僅供參考，不構成任何投資建議。
+        数据来源：Yahoo Finance。本站地址 blog.yupion.com，内容僅供參考，不構成任何投資建議。
       </footer>
     </main>
   );
