@@ -1,24 +1,31 @@
 import Link from "next/link";
 import { Shell } from "@/components/Layout";
 import { getBrief } from "@/lib/storage";
+import { parseLang, t, type Lang } from "@/lib/i18n";
 import type { MarketRow } from "@/lib/types";
 
 export const revalidate = 600;
 
 export default async function BriefDetail({
   params,
+  searchParams,
 }: {
   params: Promise<{ date: string }>;
+  searchParams: Promise<{ lang?: string }>;
 }) {
   const { date } = await params;
+  const { lang: raw } = await searchParams;
+  const lang = parseLang(raw);
   const brief = await getBrief(date);
 
   if (!brief) {
     return (
-      <Shell>
-        <p className="text-[var(--color-muted)]">未找到 {date} 的早报。</p>
-        <Link href="/briefs" className="mt-4 inline-block nav-link">
-          ← 返回归档
+      <Shell lang={lang}>
+        <p className="text-[var(--color-muted)]">
+          {t(lang, "notFound")} {date}。
+        </p>
+        <Link href={`/briefs?lang=${lang}`} className="mt-4 inline-block nav-link">
+          {t(lang, "backToArchives")}
         </Link>
       </Shell>
     );
@@ -31,13 +38,15 @@ export default async function BriefDetail({
   ];
 
   return (
-    <Shell>
-      <Link href="/briefs" className="nav-link">
-        ← 返回归档
+    <Shell lang={lang}>
+      <Link href={`/briefs?lang=${lang}`} className="nav-link">
+        {t(lang, "backToArchives")}
       </Link>
       <article className="mt-4 space-y-6">
         <div>
-          <span className="chip">{brief.date}</span>
+          <span className="chip">
+            {t(lang, "latestBrief")} · {brief.date}
+          </span>
           <h1 className="mt-3 text-2xl font-bold tracking-tight">
             {brief.title}
           </h1>
@@ -48,14 +57,14 @@ export default async function BriefDetail({
 
         <section className="card">
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-            市场回顾
+            {t(lang, "marketReview")}
           </h2>
           <table className="tbl">
             <thead>
               <tr>
-                <th>标的</th>
-                <th className="text-right">收盘</th>
-                <th className="text-right">涨跌</th>
+                <th>{t(lang, "colName")}</th>
+                <th className="text-right">{t(lang, "colClose")}</th>
+                <th className="text-right">{t(lang, "colChg")}</th>
               </tr>
             </thead>
             <tbody>
@@ -79,7 +88,7 @@ export default async function BriefDetail({
 
         <section className="space-y-4">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-            新闻
+            {t(lang, "news")}
           </h2>
           {brief.news.map((n, i) => (
             <article key={i} className="card space-y-2">
@@ -97,7 +106,7 @@ export default async function BriefDetail({
 
         <section className="card">
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-            总结
+            {t(lang, "summary")}
           </h2>
           <p className="text-sm text-[var(--color-fg)]/90">{brief.summary}</p>
         </section>

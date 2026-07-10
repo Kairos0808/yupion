@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Shell } from "@/components/Layout";
+import { parseLang, t, type Lang } from "@/lib/i18n";
 import type { MarketSnapshot } from "@/lib/types";
 
 export default function WatchlistPage() {
+  const params = useSearchParams();
+  const lang = parseLang(params.get("lang") ?? undefined);
   const [holdings, setHoldings] = useState<MarketSnapshot["holdings"]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,18 +20,18 @@ export default function WatchlistPage() {
   }, []);
 
   return (
-    <Shell>
-      <h1 className="text-2xl font-bold tracking-tight">关注</h1>
+    <Shell lang={lang}>
+      <h1 className="text-2xl font-bold tracking-tight">{t(lang, "watchlist")}</h1>
       {loading ? (
-        <p className="mt-6 text-[var(--color-muted)]">加载中…</p>
+        <p className="mt-6 text-[var(--color-muted)]">{t(lang, "loading")}</p>
       ) : (
         <section className="card mt-6">
           <table className="tbl">
             <thead>
               <tr>
-                <th>标的</th>
-                <th className="text-right">价格</th>
-                <th className="text-right">涨跌</th>
+                <th>{t(lang, "colName")}</th>
+                <th className="text-right">{t(lang, "colClose")}</th>
+                <th className="text-right">{t(lang, "colChg")}</th>
               </tr>
             </thead>
             <tbody>
@@ -49,9 +53,7 @@ export default function WatchlistPage() {
           </table>
         </section>
       )}
-      <p className="mt-4 text-xs text-[var(--color-muted)]">
-        关注列表可在服务器配置中添加（data/watchlist.json）。
-      </p>
+      <p className="mt-4 text-xs text-[var(--color-muted)]">{t(lang, "wlNote")}</p>
     </Shell>
   );
 }

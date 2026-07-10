@@ -1,36 +1,43 @@
 import Link from "next/link";
 import { Shell } from "@/components/Layout";
 import { getLatestBrief } from "@/lib/storage";
+import { parseLang, t, tpl, type Lang } from "@/lib/i18n";
 import type { MarketRow } from "@/lib/types";
 
 export const revalidate = 600;
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}) {
+  const { lang: raw } = await searchParams;
+  const lang = parseLang(raw);
   const brief = await getLatestBrief();
 
   return (
-    <Shell>
+    <Shell lang={lang}>
       <section className="space-y-6 text-center">
         <div className="space-y-4">
-          <span className="chip">Fintech · 每日早报</span>
+          <span className="chip">{t(lang, "heroKicker")}</span>
           <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-4xl">
-            金融科技早报
+            {t(lang, "heroTitle")}
           </h1>
           <p className="mx-auto max-w-xl text-sm text-[var(--color-muted)]">
-            每日 fintech 新闻摘要、原创分析与美股 / 加密市场快照，由 Hermes Agent 自动生成。
+            {t(lang, "heroDesc")}
           </p>
           <div className="flex justify-center gap-3 pt-2">
             <a
-              href="/briefs"
+              href={`/briefs?lang=${lang}`}
               className="rounded-xl bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-white transition hover:opacity-90"
             >
-              浏览早报
+              {t(lang, "btnBriefs")}
             </a>
             <a
-              href="/market"
+              href={`/market?lang=${lang}`}
               className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-2)] px-4 py-2 text-sm font-medium transition hover:border-[var(--color-accent)]"
             >
-              实时行情
+              {t(lang, "btnMarket")}
             </a>
           </div>
         </div>
@@ -43,11 +50,13 @@ export default async function HomePage() {
       <div className="my-8 h-px bg-[var(--color-border)]" />
 
       {!brief ? (
-        <p className="text-center text-[var(--color-muted)]">暂无早报。等待下次推送…</p>
+        <p className="text-center text-[var(--color-muted)]">{t(lang, "noBrief")}</p>
       ) : (
         <article className="space-y-6 text-center">
           <div>
-            <span className="chip">最新早报 · {brief.date}</span>
+            <span className="chip">
+              {t(lang, "latestBrief")} · {brief.date}
+            </span>
             <h2 className="mt-3 text-2xl font-bold tracking-tight">
               {brief.title}
             </h2>
@@ -58,14 +67,14 @@ export default async function HomePage() {
 
           <section className="card text-left">
             <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-              市场回顾
+              {t(lang, "marketReview")}
             </h3>
             <MarketTable brief={brief} />
           </section>
 
           <section className="space-y-4 text-left">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-              新闻
+              {t(lang, "news")}
             </h3>
             {brief.news.map((n, i) => (
               <article key={i} className="card space-y-2">
@@ -83,7 +92,7 @@ export default async function HomePage() {
 
           <section className="card text-left">
             <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
-              总结
+              {t(lang, "summary")}
             </h3>
             <p className="text-sm text-[var(--color-fg)]/90">{brief.summary}</p>
           </section>
@@ -103,9 +112,9 @@ function MarketTable({ brief }: { brief: import("@/lib/types").Brief }) {
     <table className="tbl">
       <thead>
         <tr>
-          <th>标的</th>
-          <th className="text-right">收盘</th>
-          <th className="text-right">涨跌</th>
+          <th>{t("en", "colName")}</th>
+          <th className="text-right">{t("en", "colClose")}</th>
+          <th className="text-right">{t("en", "colChg")}</th>
         </tr>
       </thead>
       <tbody>

@@ -1,23 +1,30 @@
 import Link from "next/link";
 import { Shell } from "@/components/Layout";
 import { listBriefDates, getBrief } from "@/lib/storage";
+import { parseLang, t, type Lang } from "@/lib/i18n";
 
 export const revalidate = 600;
 
-export default async function BriefsPage() {
+export default async function BriefsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}) {
+  const { lang: raw } = await searchParams;
+  const lang = parseLang(raw);
   const dates = await listBriefDates();
   const briefs = await Promise.all(dates.map((d) => getBrief(d)));
 
   return (
-    <Shell>
-      <h1 className="text-2xl font-bold tracking-tight">早报归档</h1>
+    <Shell lang={lang}>
+      <h1 className="text-2xl font-bold tracking-tight">{t(lang, "archives")}</h1>
       <ul className="mt-6 space-y-3">
         {briefs.map(
           (b) =>
             b && (
               <li key={b.date}>
                 <Link
-                  href={`/briefs/${b.date}`}
+                  href={`/briefs/${b.date}?lang=${lang}`}
                   className="card block transition hover:border-[var(--color-accent)]"
                 >
                   <span className="chip mb-2">{b.date}</span>
@@ -30,7 +37,7 @@ export default async function BriefsPage() {
             )
         )}
         {briefs.length === 0 && (
-          <li className="text-[var(--color-muted)]">暂无归档。</li>
+          <li className="text-[var(--color-muted)]">{t(lang, "noBrief")}</li>
         )}
       </ul>
     </Shell>
