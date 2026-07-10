@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Shell } from "@/components/Layout";
 import type { MarketSnapshot } from "@/lib/types";
 
 export default function WatchlistPage() {
@@ -15,45 +16,42 @@ export default function WatchlistPage() {
   }, []);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-2xl font-bold">关注</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        <a href="/" className="underline">
-          ← 返回首页
-        </a>
-      </p>
+    <Shell>
+      <h1 className="text-2xl font-bold tracking-tight">关注</h1>
       {loading ? (
-        <p className="mt-6 text-gray-500">加载中…</p>
+        <p className="mt-6 text-[var(--color-muted)]">加载中…</p>
       ) : (
-        <table className="mt-6 w-full text-sm">
-          <thead>
-            <tr className="text-left text-gray-500">
-              <th className="py-1">标的</th>
-              <th className="py-1 text-right">价格</th>
-              <th className="py-1 text-right">涨跌</th>
-            </tr>
-          </thead>
-          <tbody>
-            {holdings.map((r, i) => (
-              <tr key={i} className="border-t">
-                <td className="py-1">{r.name}</td>
-                <td className="py-1 text-right">{r.close}</td>
-                <td
-                  className={`py-1 text-right ${
-                    r.changePct >= 0 ? "text-green-600" : "text-red-600"
-                  }`}
-                >
-                  {r.changePct >= 0 ? "+" : ""}
-                  {r.changePct}%
-                </td>
+        <section className="card mt-6">
+          <table className="tbl">
+            <thead>
+              <tr>
+                <th>标的</th>
+                <th className="text-right">价格</th>
+                <th className="text-right">涨跌</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {holdings.map((r, i) => (
+                <tr key={i}>
+                  <td>{r.name}</td>
+                  <td className="text-right tabular-nums">{r.close}</td>
+                  <td
+                    className={`text-right tabular-nums ${
+                      r.changePct >= 0 ? "up" : "down"
+                    }`}
+                  >
+                    {r.changePct >= 0 ? "+" : ""}
+                    {r.changePct}%
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
       )}
-      <p className="mt-6 text-xs text-gray-400">
-        关注列表可在服务器配置中添加。
+      <p className="mt-4 text-xs text-[var(--color-muted)]">
+        关注列表可在服务器配置中添加（data/watchlist.json）。
       </p>
-    </main>
+    </Shell>
   );
 }
