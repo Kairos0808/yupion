@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Shell } from "@/components/Layout";
 import { parseLang, t, type Lang } from "@/lib/i18n";
 import type { MarketSnapshot, MarketRow } from "@/lib/types";
 
-export default function MarketPage() {
+function MarketInner() {
   const params = useSearchParams();
   const lang = parseLang(params.get("lang") ?? undefined);
   const [data, setData] = useState<MarketSnapshot | null>(null);
@@ -44,6 +44,14 @@ export default function MarketPage() {
         </div>
       )}
     </Shell>
+  );
+}
+
+export default function MarketPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-[var(--color-muted)]">…</div>}>
+      <MarketInner />
+    </Suspense>
   );
 }
 

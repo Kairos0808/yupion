@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Shell } from "@/components/Layout";
 import { parseLang, t, type Lang } from "@/lib/i18n";
 import type { MarketSnapshot } from "@/lib/types";
 
-export default function WatchlistPage() {
+function WatchlistInner() {
   const params = useSearchParams();
   const lang = parseLang(params.get("lang") ?? undefined);
   const [holdings, setHoldings] = useState<MarketSnapshot["holdings"]>([]);
@@ -55,5 +55,13 @@ export default function WatchlistPage() {
       )}
       <p className="mt-4 text-xs text-[var(--color-muted)]">{t(lang, "wlNote")}</p>
     </Shell>
+  );
+}
+
+export default function WatchlistPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-[var(--color-muted)]">…</div>}>
+      <WatchlistInner />
+    </Suspense>
   );
 }
