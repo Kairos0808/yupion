@@ -10,7 +10,7 @@ export default async function HomePage() {
 
   return (
     <Shell>
-      <section className="grid items-center gap-8 md:grid-cols-2">
+      <section className="space-y-6">
         <div className="space-y-4">
           <span className="chip">Fintech · 每日早报</span>
           <h1 className="text-3xl font-bold leading-tight tracking-tight md:text-4xl">
@@ -34,12 +34,12 @@ export default async function HomePage() {
             </a>
           </div>
         </div>
-        <div className="rounded-2xl bg-white p-3 shadow-lg">
+        <div className="overflow-hidden rounded-2xl bg-white shadow-lg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/hero.jpg"
+            src="/hero.png"
             alt="hero"
-            className="w-full rounded-xl"
+            className="w-full"
           />
         </div>
       </section>
