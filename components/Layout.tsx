@@ -10,7 +10,7 @@ const NAV = [
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-10 border-b border-[var(--color-border)] bg-[var(--color-bg)]/80 backdrop-blur">
+    <header className="sticky top-0 z-10 border-b border-[var(--color-border)] bg-[var(--color-surface)]/85 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-[var(--color-surface-2)] ring-1 ring-[var(--color-border)]">
@@ -39,7 +39,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto border-t border-[var(--color-border)] py-6">
+    <footer className="mt-auto border-t border-[var(--color-border)] bg-[var(--color-surface)] py-6">
       <div className="mx-auto flex max-w-5xl flex-col gap-2 px-4 text-xs text-[var(--color-muted)]">
         <p>
           数据来源：Yahoo Finance。本站地址 blog.yupion.com，内容仅供参考，不构成任何投资建议。

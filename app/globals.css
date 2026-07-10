@@ -5,26 +5,26 @@
     "Hiragino Sans GB", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --color-bg: #0b0e14;
-  --color-surface: #151a23;
-  --color-surface-2: #1c2330;
-  --color-border: #262d3a;
-  --color-fg: #e6e9ef;
-  --color-muted: #8b94a7;
-  --color-accent: #5b8cff;
-  --color-accent-2: #00d4b8;
-  --color-up: #2ecc71;
-  --color-down: #ff5c5c;
+  --color-bg: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef2f7;
+  --color-border: #e2e8f0;
+  --color-fg: #0f172a;
+  --color-muted: #64748b;
+  --color-accent: #2563eb;
+  --color-accent-2: #0d9488;
+  --color-up: #16a34a;
+  --color-down: #dc2626;
 }
 
 @layer base {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
   body {
     background:
-      radial-gradient(1200px 600px at 80% -10%, rgba(91, 140, 255, 0.12), transparent),
-      radial-gradient(900px 500px at -10% 10%, rgba(0, 212, 184, 0.08), transparent),
+      radial-gradient(1200px 600px at 80% -10%, rgba(37, 99, 235, 0.08), transparent),
+      radial-gradient(900px 500px at -10% 10%, rgba(13, 148, 136, 0.06), transparent),
       var(--color-bg);
     color: var(--color-fg);
     font-family: var(--font-sans);
@@ -34,7 +34,7 @@
 
 @layer components {
   .card {
-    @apply rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5;
+    @apply rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-sm;
   }
   .chip {
     @apply inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-2)] px-3 py-1 text-xs text-[var(--color-muted)];
