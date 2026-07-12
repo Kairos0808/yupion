@@ -38,6 +38,11 @@ yarn-error.log*
 
 # runtime data lives in repo (Vercel read-only FS, published via git push)
 
+# 安全: 绝不发布含个人隐私的文件。drafts(旧中文草稿含个人持仓/净值)禁止进仓库
+/drafts/
+*.draft.md
+finfetch_cache/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
