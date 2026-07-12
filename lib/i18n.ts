@@ -93,3 +93,12 @@ export function tpl(lang: Lang, key: keyof typeof D, vars: Record<string, string
   for (const [k, v] of Object.entries(vars)) s = s.replace(`{${k}}`, String(v));
   return s;
 }
+
+// 从双语字段取当前语言文本（兜底另一语言）
+export function pick(
+  field: { en: string; zh: string } | undefined,
+  lang: Lang
+): string {
+  if (!field) return "";
+  return lang === "zh" ? field.zh || field.en : field.en || field.zh;
+}

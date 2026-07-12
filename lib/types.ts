@@ -1,3 +1,8 @@
+export interface Localized {
+  en: string;
+  zh: string;
+}
+
 export interface MarketRow {
   name: string;
   close: number;
@@ -12,18 +17,18 @@ export interface MarketSnapshot {
 }
 
 export interface NewsItem {
-  title: string;
+  title: Localized;
   source: string;
   time: string;
-  summary: string;
-  analysis: string;
+  summary: Localized;
+  analysis: Localized;
 }
 
 export interface Brief {
   date: string; // YYYY-MM-DD
-  title: string;
-  overview: string;
+  title: Localized;
+  overview: Localized;
   market: MarketSnapshot;
   news: NewsItem[];
-  summary: string;
+  summary: Localized;
 }

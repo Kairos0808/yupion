@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Shell } from "@/components/Layout";
 import { getBrief } from "@/lib/storage";
-import { parseLang, t, type Lang } from "@/lib/i18n";
+import { parseLang, t, pick, type Lang } from "@/lib/i18n";
 import type { MarketRow } from "@/lib/types";
 
 export const revalidate = 600;
@@ -48,10 +48,10 @@ export default async function BriefDetail({
             {t(lang, "latestBrief")} · {brief.date}
           </span>
           <h1 className="mt-3 text-2xl font-bold tracking-tight">
-            {brief.title}
+            {pick(brief.title, lang)}
           </h1>
           <p className="mt-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 text-sm">
-            {brief.overview}
+            {pick(brief.overview, lang)}
           </p>
         </div>
 
@@ -93,13 +93,13 @@ export default async function BriefDetail({
           {brief.news.map((n, i) => (
             <article key={i} className="card space-y-2">
               <h3 className="font-medium">
-                {i + 1}. {n.title}
+                {i + 1}. {pick(n.title, lang)}
               </h3>
               <p className="text-xs text-[var(--color-muted)]">
                 {n.source} · {n.time}
               </p>
-              <p className="text-sm text-[var(--color-fg)]/90">{n.summary}</p>
-              <p className="text-sm text-[var(--color-muted)]">{n.analysis}</p>
+              <p className="text-sm text-[var(--color-fg)]/90">{pick(n.summary, lang)}</p>
+              <p className="text-sm text-[var(--color-muted)]">{pick(n.analysis, lang)}</p>
             </article>
           ))}
         </section>
@@ -108,7 +108,7 @@ export default async function BriefDetail({
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--color-muted)]">
             {t(lang, "summary")}
           </h2>
-          <p className="text-sm text-[var(--color-fg)]/90">{brief.summary}</p>
+          <p className="text-sm text-[var(--color-fg)]/90">{pick(brief.summary, lang)}</p>
         </section>
       </article>
     </Shell>

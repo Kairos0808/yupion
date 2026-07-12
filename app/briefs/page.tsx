@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Shell } from "@/components/Layout";
 import { listBriefDates, getBrief } from "@/lib/storage";
-import { parseLang, t, type Lang } from "@/lib/i18n";
+import { parseLang, t, pick, type Lang } from "@/lib/i18n";
 
 export const revalidate = 600;
 
@@ -28,9 +28,9 @@ export default async function BriefsPage({
                   className="card block transition hover:border-[var(--color-accent)]"
                 >
                   <span className="chip mb-2">{b.date}</span>
-                  <h2 className="font-medium">{b.title}</h2>
+                  <h2 className="font-medium">{pick(b.title, lang)}</h2>
                   <p className="mt-1 text-sm text-[var(--color-muted)]">
-                    {b.overview}
+                    {pick(b.overview, lang)}
                   </p>
                 </Link>
               </li>
