@@ -1,0 +1,173 @@
+{
+  "date": "2026-07-14",
+  "title": {
+    "en": "Fintech Daily Brief | July 14, 2026",
+    "zh": "金融科技早报 | July 14, 2026"
+  },
+  "overview": {
+    "en": "Tech stocks declined led by semiconductor weakness as AI trade sentiment soured, while Bitcoin slumped below $63K on geopolitical risk-off. In fintech, Kraken launched a crypto debit card, Kalshi went pro with event derivatives, and New Hampshire signed landmark blockchain legislation.",
+    "zh": "科技股因AI交易情绪转弱而下跌，半导体板块领跌；比特币因地缘政治避险情绪跌至63,000美元以下。金融科技方面，Kraken推出加密借记卡，Kalshi进军专业事件衍生品市场，新罕布什尔州签署里程碑式区块链立法。"
+  },
+  "market": {
+    "indices": [
+      {
+        "name": "S&P 500",
+        "close": 7515.34,
+        "changePct": -0.79
+      },
+      {
+        "name": "NASDAQ",
+        "close": 25873.18,
+        "changePct": -1.55
+      },
+      {
+        "name": "Dow Jones",
+        "close": 52498.64,
+        "changePct": -0.26
+      },
+      {
+        "name": "VIX",
+        "close": 17.16,
+        "changePct": 14.17
+      }
+    ],
+    "holdings": [
+      {
+        "name": "TSLA",
+        "close": 394.76,
+        "changePct": -3.19
+      },
+      {
+        "name": "Strategy (MSTR)",
+        "close": 92.1,
+        "changePct": -2.68
+      },
+      {
+        "name": "NVDA",
+        "close": 203.53,
+        "changePct": -3.52
+      },
+      {
+        "name": "SMR",
+        "close": 8.35,
+        "changePct": -7.63
+      },
+      {
+        "name": "GOOGL",
+        "close": 352.51,
+        "changePct": -1.31
+      },
+      {
+        "name": "MSFT",
+        "close": 390.99,
+        "changePct": 1.53
+      },
+      {
+        "name": "NOK",
+        "close": 11.69,
+        "changePct": -6.03
+      },
+      {
+        "name": "SPY",
+        "close": 749.17,
+        "changePct": -0.77
+      },
+      {
+        "name": "JEPQ",
+        "close": 59.59,
+        "changePct": -1.52
+      }
+    ],
+    "btc": {
+      "name": "BTC",
+      "close": 62227,
+      "changePct": -2.7
+    }
+  },
+  "news": [
+    {
+      "title": {
+        "en": "Bitcoin Prices Drop As Geopolitical Turmoil Triggers Risk-Off Selling",
+        "zh": "地缘政治动荡引发避险抛售，比特币价格下跌"
+      },
+      "source": "Forbes",
+      "time": "2026-07-13",
+      "summary": {
+        "en": "Bitcoin fell below $63,000 as escalating geopolitical tensions drove investors toward safe-haven assets. The broader crypto market saw widespread declines amid risk-off sentiment.",
+        "zh": "受地缘政治紧张局势升级影响，投资者转向避险资产，比特币跌至63,000美元以下。在避险情绪主导下，加密市场普遍下跌。"
+      },
+      "analysis": {
+        "en": "The sell-off reflects BTC's continued correlation with traditional risk assets during macro shocks. Key support at $60K will be tested if geopolitical headlines worsen. A VIX spike above 17 reinforces the risk-off narrative.",
+        "zh": "此轮抛售反映了比特币在宏观冲击下与传统风险资产的持续相关性。若地缘政治消息面恶化，6万美元关键支撑位将面临考验。VIX飙升至17以上强化了避险叙事。"
+      }
+    },
+    {
+      "title": {
+        "en": "Kraken Debuts Debit Card to Let Customers Pay in Crypto",
+        "zh": "Kraken推出借记卡，允许用户使用加密货币支付"
+      },
+      "source": "PYMNTS.com",
+      "time": "2026-07-13",
+      "summary": {
+        "en": "Kraken launched a debit card that enables users to spend their crypto holdings directly at merchants, bridging the gap between digital assets and everyday payments.",
+        "zh": "Kraken推出借记卡，用户可直接在商户处消费其加密资产，弥合数字资产与日常支付之间的鸿沟。"
+      },
+      "analysis": {
+        "en": "This move positions Kraken against card offerings from Coinbase and Binance. It signals an industry push toward crypto payment utility beyond speculation, potentially accelerating mainstream adoption.",
+        "zh": "此举使Kraken与Coinbase和Binance的卡产品形成竞争。这标志着行业推动加密货币支付实用化，超越投机属性，可能加速主流采用。"
+      }
+    },
+    {
+      "title": {
+        "en": "Kalshi Launches Pro Terminal as It Moves Deeper Into Professional Derivatives Trading",
+        "zh": "Kalshi推出专业终端，深入专业衍生品交易领域"
+      },
+      "source": "Finance Magnates",
+      "time": "2026-07-13",
+      "summary": {
+        "en": "Kalshi, the CFTC-regulated prediction market platform, launched a Pro Terminal with advanced charting, real-time data, and institutional-grade execution tools for event contracts.",
+        "zh": "受CFTC监管的预测市场平台Kalshi推出专业终端，提供高级图表、实时数据和机构级执行工具，用于事件合约交易。"
+      },
+      "analysis": {
+        "en": "The professional-grade terminal signals Kalshi's ambition to capture institutional flow in the rapidly growing event derivatives space. This directly competes with Polymarket and traditional finance prediction products.",
+        "zh": "专业级终端的推出标志着Kalshi在快速增长的事件衍生品领域吸引机构资金的雄心。这与Polymarket和传统金融预测产品形成直接竞争。"
+      }
+    },
+    {
+      "title": {
+        "en": "New Hampshire Follows Bitcoin Reserve With 'Blockchain Basic Laws' Signing",
+        "zh": "新罕布什尔州签署「区块链基本法」，跟进比特币储备政策"
+      },
+      "source": "Decrypt",
+      "time": "2026-07-13",
+      "summary": {
+        "en": "New Hampshire signed comprehensive blockchain legislation establishing legal frameworks for DAOs, smart contracts, and digital asset custody, following its Bitcoin reserve bill.",
+        "zh": "在通过比特币储备法案之后，新罕布什尔州签署了全面的区块链立法，为DAO、智能合约和数字资产托管建立法律框架。"
+      },
+      "analysis": {
+        "en": "The 'Blockchain Basic Laws' represent a model for US state-level crypto regulation. Clear legal frameworks could attract blockchain businesses and set precedents for other states considering similar legislation.",
+        "zh": "「区块链基本法」代表了美国州级加密监管的模板。明确的法律框架可能吸引区块链企业入驻，并为其他考虑类似立法的州树立先例。"
+      }
+    },
+    {
+      "title": {
+        "en": "Circle CEO: AI Agents and Blockchain Will Merge Into a Single Global Economy",
+        "zh": "Circle CEO：AI代理与区块链将融合为单一全球经济"
+      },
+      "source": "CCN.com",
+      "time": "2026-07-13",
+      "summary": {
+        "en": "Circle CEO Jeremy Allaire predicted that AI agents and blockchain technology will converge into a unified global economic system, with stablecoins as the primary payment rail for machine-to-machine transactions.",
+        "zh": "Circle首席执行官Jeremy Allaire预测，AI代理与区块链技术将融合为统一的全球经济体系，稳定币将成为机器对机器交易的主要支付通道。"
+      },
+      "analysis": {
+        "en": "Allaire's vision aligns with growing interest in AI-agent commerce. Circle's USDC is well-positioned as programmable money for autonomous agent transactions, though regulatory clarity around AI-driven finance remains unresolved.",
+        "zh": "Allaire的愿景与对AI代理商业日益增长的兴趣相吻合。Circle的USDC作为可编程货币在自主代理交易中占据优势地位，但围绕AI驱动金融的监管清晰度仍有待解决。"
+      }
+    }
+  ],
+  "summary": {
+    "en": "Mixed markets: US equities dipped on AI sector concerns and geopolitical tensions, while VIX surged 14%. Crypto saw a sharp pullback with BTC -2.7% amid broader risk-off. Fintech developments remained active with crypto payment cards, prediction market terminals, and state-level blockchain regulation making headlines.",
+    "zh": "市场表现分化：美股因AI板块担忧和地缘政治紧张而下跌，VIX飙升14%。加密市场在避险环境中大幅回调，BTC跌2.7%。金融科技领域依然活跃，加密支付卡、预测市场终端和州级区块链监管成为头条。"
+  }
+}
